@@ -22,6 +22,7 @@ import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class ContractController {
     private final CircuitBreakerFactory circuitBreakerFactory;
 
     @PostMapping
-    public ResponseEntity addContract(@RequestBody AddContractDto addContractDto, BindingResult bindingResult){
+    public ResponseEntity addContract(@Validated @RequestBody AddContractDto addContractDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             String message = ms.getMessage("Error.Add.addContractDto");
             List<ErrorDto> errorDtoList = ErrorDto.byBindingResult(bindingResult, ms);
@@ -64,7 +65,7 @@ public class ContractController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity forceModifyContract(@PathVariable Long id, @RequestBody ContractDto modifyContractDto, BindingResult bindingResult){
+    public ResponseEntity forceModifyContract(@PathVariable Long id, @Validated @RequestBody ContractDto modifyContractDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             String message = ms.getMessage("Error.Modify.contractDto");
             List<ErrorDto> errorDtoList = ErrorDto.byBindingResult(bindingResult, ms);

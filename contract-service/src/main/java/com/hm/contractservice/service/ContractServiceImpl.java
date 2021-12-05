@@ -26,7 +26,6 @@ public class ContractServiceImpl implements ContractService{
 
     @Override
     public Contract addContract(AddContractDto addContractDto, ClientDetailDto client, InsuranceDetailDto insurance, UserDetailDto user) {
-        checkInsuranceConditions(client,insurance);
         return contractRepo.save(addContractDto.toContract(insurance.getName()));
     }
 
@@ -58,18 +57,6 @@ public class ContractServiceImpl implements ContractService{
     @Override
     public void modifyContractInsuranceName(Long id, String insuranceName) {
         contractRepo.bulkModifyInsuranceName(id, insuranceName);
-    }
-
-    private Boolean checkInsuranceConditions(ClientDetailDto client, InsuranceDetailDto insurance) {
-        int age = client.getPrivacy().getAge();
-        if(client.getPrivacy()==null||client.getPrivacy().getAge()==0)
-            throw new RuntimeException();
-
-        InsuranceDetailDto.InsuranceConditions conditions = insurance.getConditions();
-        if(conditions.getStartAge()<=age&&age<=conditions.getEndAge()){
-            return true;
-        }
-        return false;
     }
 
 }
