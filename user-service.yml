@@ -50,8 +50,6 @@ token:
   expiration_time: 6000000
   secret: user_token
 ---
-token:
-  change: my
 spring:
   profiles: docker
   zipkin:
