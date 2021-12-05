@@ -47,9 +47,11 @@ springdoc:
     path: /user/api-docs
     
 token:
-  expiration_time: 1000000
+  expiration_time: 6000000
   secret: user_token
 ---
+token:
+  change: my
 spring:
   profiles: docker
   zipkin:
