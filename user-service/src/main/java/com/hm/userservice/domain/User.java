@@ -36,15 +36,4 @@ public class User extends BaseTimeEntity {
 
     private String phoneNumber;
 
-
-    public User modifyUser(JoinDto joinDto) {
-        this.setLoginId(joinDto.getLoginId());
-        this.setPassword(joinDto.getPassword());
-        this.setName(joinDto.getName());
-        this.setDepartment(joinDto.getDepartment());
-        this.setCompanyPosition(joinDto.getCompanyPosition());
-        this.setEmail(joinDto.getEmail());
-        this.setPhoneNumber(joinDto.getPhoneNumber());
-        return this;
-    }
 }
