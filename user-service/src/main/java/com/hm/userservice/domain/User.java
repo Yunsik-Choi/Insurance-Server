@@ -46,5 +46,4 @@ public class User extends BaseTimeEntity {
         this.setPhoneNumber(joinDto.getPhoneNumber());
         return this;
     }
-
 }
