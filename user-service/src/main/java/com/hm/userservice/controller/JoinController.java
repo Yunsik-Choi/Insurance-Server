@@ -56,7 +56,7 @@ public class JoinController {
             return ResponseEntity.badRequest().body(EntityBody.badRequest(message,errorDtoList));
         }
         User user = joinService.login(loginDto);
-        int cookieTime = Long.valueOf(Long.parseLong(env.getProperty("token.expiration_time"))/1000L).intValue();
+        int cookieTime = Long.valueOf(env.getProperty("token.expiration_time")).intValue()/1000;
         Cookie cookie = new Cookie("token",makeToken(user.getLoginId()));
         cookie.setMaxAge(cookieTime);
         response.addCookie(cookie);

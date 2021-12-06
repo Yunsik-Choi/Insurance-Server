@@ -4,7 +4,6 @@ import com.hm.userservice.controller.dto.JoinDto;
 import com.hm.userservice.controller.dto.LoginDto;
 import com.hm.userservice.domain.User;
 import com.hm.userservice.domain.UserRepo;
-import com.hm.userservice.global.MessageSourceHandler;
 import com.hm.userservice.global.exception.AlreadyExistUser;
 import com.hm.userservice.global.exception.InvalidFindException;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +33,10 @@ public class JoinServiceImpl implements JoinService{
     @Override
     public User modifyUser(Long id, JoinDto joinDto) {
         User user = userRepo.findById(id).orElseThrow(() -> new InvalidFindException.ById());
-        if(user.getLoginId()!=joinDto.getLoginId())
-            userRepo.findUserByLoginId(joinDto.getLoginId()).orElseThrow(() -> new AlreadyExistUser());
+        if(!user.getLoginId().equals(joinDto.getLoginId())) {
+            if(userRepo.findUserByLoginId(joinDto.getLoginId()).isPresent())
+                throw new AlreadyExistUser();
+        }
         User modifyUser = user.modifyUser(joinDto);
         userRepo.flush();
         return modifyUser;
