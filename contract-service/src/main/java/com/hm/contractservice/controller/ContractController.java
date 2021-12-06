@@ -123,7 +123,7 @@ public class ContractController {
     private UserDetailDto findUserDetailDtoById(Long id, CircuitBreaker circuitBreaker) {
         UserDetailDto employee = null;
         if(id!=null)
-            employee = circuitBreaker.run(() -> getData(userService.findById(id)));
+            employee = circuitBreaker.run(() -> getData(userService.findById(id)),throwable -> null);
         return employee;
     }
 
