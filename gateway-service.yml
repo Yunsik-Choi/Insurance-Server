@@ -15,7 +15,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "*"
+            allowedOrigins: "http://hminsu.net"
             allowedMethods: "*"
         add-to-simple-url-handler-mapping: true
       routes:
