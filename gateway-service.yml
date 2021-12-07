@@ -15,6 +15,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
+            allow-credentials: true
             allowedOrigins: "http://hminsu.net"
             allowedMethods: "*"
             allowedHeaders: "*"
