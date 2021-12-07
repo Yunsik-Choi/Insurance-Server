@@ -15,7 +15,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "http://hm-frontend"
+            allowedOrigins: "http://hminsu.net"
             allowedMethods:
               - GET
               - POST
