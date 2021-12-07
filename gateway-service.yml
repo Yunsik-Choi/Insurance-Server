@@ -15,7 +15,12 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "http://hminsu.net:80"
+            allowedOrigins: "http://hminsu.net"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       routes:
         - id: user-service
           uri: lb://user-service
