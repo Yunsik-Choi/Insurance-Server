@@ -17,7 +17,7 @@ spring:
           '[/**]':
             allowedOrigins: "http://hminsu.net"
             allowedMethods: "*"
-        add-to-simple-url-handler-mapping: true
+            allowedHeaders: "*
       routes:
         - id: user-service
           uri: lb://user-service
