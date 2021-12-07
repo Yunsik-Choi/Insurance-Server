@@ -12,6 +12,10 @@ spring:
       probability: 1.0
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://hminsu.net:80"
       routes:
         - id: user-service
           uri: lb://user-service
@@ -47,6 +51,7 @@ spring:
             - Path=/v3/api-docs/**
           filters:
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/api-docs
+       
 
 eureka:
   instance:
