@@ -17,7 +17,7 @@ spring:
           '[/**]':
             allowedOrigins: "http://hminsu.net"
             allowedMethods: "*"
-            allowedHeaders: "*
+            allowedHeaders: "*"
       routes:
         - id: user-service
           uri: lb://user-service
