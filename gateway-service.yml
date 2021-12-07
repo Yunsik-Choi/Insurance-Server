@@ -12,12 +12,6 @@ spring:
       probability: 1.0
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://hminsu.net"
-            allowedMethods: "*"
-            allowedHeaders: "*"
       routes:
         - id: user-service
           uri: lb://user-service
