@@ -49,7 +49,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<EntityBody<DetailClientDto>> modifyClient(@PathVariable Long id){
+    public ResponseEntity<EntityBody<DetailClientDto>> deleteClient(@PathVariable Long id){
         clientService.deleteClientById(id);
         String message = ms.getMessage("Delete.client",id);
         log.info(message);
